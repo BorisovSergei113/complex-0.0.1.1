@@ -12,13 +12,13 @@ struct complex_t
         real=0.0f; imag=0.0f;
     }
     
-complex_t add(complex_t other)
+    complex_t add(complex_t other)
     const {
-    complex_t result;
-    result.real=real+other.real;       //this -complex_t const
-    result.imag=imag+other.imag;
-    return result;
-}
+        complex_t result;
+        result.real=real+other.real;       //this -complex_t const
+        result.imag=imag+other.imag;
+        return result;
+    }
     complex_t sub(complex_t other) const {
         complex_t result;
         result.real = real - other.real;
@@ -51,44 +51,44 @@ complex_t add(complex_t other)
         }
         return stream;
     }
-    ostream & write(ostream & stream) {
+    ostream & write(ostream & stream) const {
         return stream << '(' << real << ',' << imag << ')' << endl;
     }
 };
 
 int main()
 {
-complex_t a,b,res;
-char op;
-
-if (a.read(cin) && (cin >> op) && b.read(cin)) {
+    complex_t a,b,res;
+    char op;
     
-    switch (op) {
-        case '+':
-            res  = a.add(b);
-            res.write(cout);
-            break;
-        case '-':
-            res = a.sub(b);
-            res.write(cout);
-            break;
-        case '*':
-            res = a.mult(b);
-            res.write(cout);
-            break;
-        case '/':
-            res = a.div(b);
-            res.write(cout);
-            break;
-        default:
-            cout << '\n' << "An error has occured while reading input data";
-            break;
-            }
-            }
-            else {
-                cout << endl << "An error has occured while reading input data";
-            }
-            
-            return 0;
+    if (a.read(cin) && (cin >> op) && b.read(cin)) {
+        
+        switch (op) {
+            case '+':
+                res  = a.add(b);
+                res.write(cout);
+                break;
+            case '-':
+                res = a.sub(b);
+                res.write(cout);
+                break;
+            case '*':
+                res = a.mult(b);
+                res.write(cout);
+                break;
+            case '/':
+                res = a.div(b);
+                res.write(cout);
+                break;
+            default:
+                cout << '\n' << "An error has occured while reading input data";
+                break;
+        }
+    }
+    else {
+        cout << endl << "An error has occured while reading input data";
+    }
+    
+    return 0;
 }
 
